@@ -1,5 +1,5 @@
 module.exports = {
-    API_URL: 'http://localhost:3001/api',
+    API_URL: 'https://aratech.onrender.com/api',
     DATABASE: 'mongodb://mongo/easytrage',
     APP_PATH: '/usr/src/app',
     CONFIG_PATH: '/usr/src/app/config',
