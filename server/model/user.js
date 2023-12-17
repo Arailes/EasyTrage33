@@ -22,7 +22,7 @@ var UserSchema = new Schema({
     },
     token: {
         type: String,
-        required: false
+        required: true
     },
     apiKeys: {
         type: String 
