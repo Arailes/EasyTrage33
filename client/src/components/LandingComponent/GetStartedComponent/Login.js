@@ -4,7 +4,7 @@ import './Login.css';
 import Alert from 'react-s-alert';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
-import env from '../../config/env';
+import env from '../../../config/env';
 
 class Login extends Component {
 
