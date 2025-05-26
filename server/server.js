@@ -1,51 +1,56 @@
 'use strict'
 
-var express = require('express');
-var mongoose = require('mongoose');
-var bodyParser = require('body-parser');
-var cors = require('cors');
-var env = require('./config/env');
-var fs = require('fs');
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const env = require('./config/env');
+const fs = require('fs');
+const https = require('https');
 
-//https key/cert setup
-var hskey = fs.readFileSync(env.HTTPS_KEY);
-var hscert = fs.readFileSync(env.HTTPS_CERT);
-var options = {key: hskey, cert:hscert};
-var app = express(options);
+// https key/cert setup
+const hskey = fs.readFileSync(env.HTTPS_KEY);
+const hscert = fs.readFileSync(env.HTTPS_CERT);
+const options = { key: hskey, cert: hscert };
 
-var router = express.Router();
+const app = express();
 
-var port = process.env.API_PORT || 3001;
+const port = process.env.API_PORT || 3001;
 
-mongoose.connect(env.DATABASE);
+// Conexão com o banco de dados com tratamento de erro
+mongoose.connect(env.DATABASE, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('MongoDB conectado'))
+  .catch(err => {
+    console.error('Erro ao conectar ao MongoDB:', err);
+    process.exit(1);
+  });
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
+// Rotas
+const router = express.Router();
 app.use('/api', router);
 
 router.get('/', function(req, res) {
   res.json({ message: 'API Initialized!'});
 });
 
-//import /auth routes
+// Importação das rotas
 const auth = require('./routes/auth');
-app.use('/auth', auth.router);
+app.use('/auth', auth.router || auth);
 
-//import /price routes
 const price = require('./routes/price');
-app.use('/api/price', price);
+app.use('/api/price', price.router || price);
 
-//import /suggestions routes
 const suggestions = require('./routes/suggestions');
-app.use('/api/suggestions', suggestions.router);
+app.use('/api/suggestions', suggestions.router || suggestions);
 
-//import /bot routes
 const bot = require('./routes/bot');
-app.use('/api/bot', bot);
+app.use('/api/bot', bot.router || bot);
 
-//set server to listen on port on any interface (0.0.0.0)
-app.listen(port, "0.0.0.0", function() {
-  console.log(`api running on port ${port}`);
+// Criação do servidor HTTPS
+https.createServer(options, app).listen(port, "0.0.0.0", function() {
+  console.log(`API rodando em https na porta ${port}`);
 });

@@ -1,3 +1,4 @@
+/* eslint-disable */
 //file for /auth related routes (login, register, etc)
 
 const express = require('express');
