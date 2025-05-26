@@ -109,7 +109,7 @@ class Settings extends Component {
     else{
       var oldData = this.state.data;
       if(event.target.name.indexOf("Secret") !== -1){
-        // this.state.data[event.target.name.split("Secret")[0]].secret = event.target.value;
+        // this.state.data[event.target.name].secret = event.target.value;
         oldData[event.target.name.split("Secret")[0]].secret = event.target.value;
         this.setState({data: oldData});
         console.log(JSON.stringify(this.state.data));
