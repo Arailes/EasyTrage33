@@ -1,5 +1,5 @@
-import env from './config/env';
+const env = {
+    API_URL: 'https://localhost:3001'
+};
 
-module.exports = {
-    API_URL: env.API_URL || 'https://localhost:3001'
-}
+export default env;
