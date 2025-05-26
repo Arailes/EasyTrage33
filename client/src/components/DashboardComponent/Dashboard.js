@@ -9,7 +9,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import { Tabs, Tab } from 'material-ui/Tabs';
 import Alert from 'react-s-alert';
 import axios from 'axios';
-import env from '../../../config/env';
+import env from '../../config/env';
 import Center from 'react-center';
 // eslint-disable-next-line no-unused-vars
 import Navbar from '../NavbarComponent/Navbar';

@@ -47,7 +47,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
-import env from '../../../../config/env';
+import env from '../../config/env';
 import Alert from 'react-s-alert';
 
 import './Suggestions.css';
