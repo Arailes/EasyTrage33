@@ -113,7 +113,7 @@ class Login extends Component {
           <input name='email' placeholder='email@domail.com' ref='email'
             type='text' disabled={this.state.formDisabled} onKeyDown={this.handleKeyDown.bind(this)} />
           <input id='pw' name='password' placeholder='Password' ref='password'
-            type='password' disabled={this.state.formDisabled} onKeyDown={this.handleKeyDown.bind(this)} />
+            type='password' disabled={this.state.formDisabled} onKeyDown={this.handleKeyDown.bind(this)} autoComplete='current-password' />
           <Alert stack={{ limit: 2, spacing: 50 }} />
           {/* <br/> */}
           <input id='login' type='button' defaultValue='Sign in' ref='signin'
