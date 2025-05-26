@@ -39,7 +39,7 @@ router.post('/login', function (req, res) {
             throw err;
           }
           if (isMatch) {
-            const token = jwt.sign({ user: req.user }, 'temp_pass');
+            const token = jwt.sign({ user: user }, 'temp_pass');
             User.findOneAndUpdate({ email: email }, { token: token }, (err, user) => {
               if (err) {
                 res.json({ success: false, message: String(err) });
