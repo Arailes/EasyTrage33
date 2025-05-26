@@ -11,6 +11,8 @@ import Alert from 'react-s-alert';
 import axios from 'axios';
 import env from '../../../config/env';
 import Center from 'react-center';
+// eslint-disable-next-line no-unused-vars
+import Navbar from '../NavbarComponent/Navbar';
 
 
 class Dashboard extends Component {
