@@ -16,8 +16,8 @@ const options = { key: hskey, cert: hscert };
 
 const app = express();
 
-const port = process.env.PORT || 3001; // Use PORT do Render, ou 3001 localmente
-const httpPort = process.env.PORT || 5500;
+const port = process.env.PORT || 10000; // Use PORT do Render, ou 3001 localmente
+const httpPort = process.env.PORT || 10001;
 
 // Conexão com o banco de dados com tratamento de erro
 mongoose.connect(env.DATABASE, { useNewUrlParser: true, useUnifiedTopology: true })
