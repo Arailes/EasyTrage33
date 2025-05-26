@@ -16,8 +16,8 @@ const options = { key: hskey, cert: hscert };
 
 const app = express();
 
-const port = process.env.API_PORT || 3001;
-const httpPort = 3000;
+const port = process.env.PORT || 3001; // Use PORT do Render, ou 3001 localmente
+const httpPort = process.env.PORT || 3000;
 
 // Conexão com o banco de dados com tratamento de erro
 mongoose.connect(env.DATABASE, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -57,7 +57,6 @@ https.createServer(options, app).listen(port, "0.0.0.0", function() {
   console.log(`API rodando em https na porta ${port}`);
 });
 
-// Criação do servidor HTTP para facilitar testes locais
-http.createServer(app).listen(httpPort, "0.0.0.0", function() {
+app.listen(httpPort, "0.0.0.0", () => {
   console.log(`API rodando em http na porta ${httpPort}`);
 });
