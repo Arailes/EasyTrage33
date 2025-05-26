@@ -13,33 +13,6 @@ import env from '../../../config/env';
 import Center from 'react-center';
 
 
-const styles = {
-  headline: {
-    fontSize: 24,
-    paddingTop: 5,
-    marginBottom: 12,
-    fontWeight: 400,
-  },
-  logOut: {
-    position: "absolute",
-    right: "1%",
-    top: "1%",
-    backgroundColor: "#FF1744",
-    width: "7%",
-    margin: "1%"
-    // disabledBackgroundColor: "#FF1744"
-  },
-  tabs: {
-    backgroundColor: "#67c26f",
-    color: "white"
-  },
-  tabsActive: {
-    // #139149
-    backgroundColor: "#FF1744"
-    // backgroundColor: "#FF1744"
-  }
-};
-
 class Dashboard extends Component {
   constructor(props){
     super(props);

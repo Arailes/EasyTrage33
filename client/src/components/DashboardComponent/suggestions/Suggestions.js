@@ -44,7 +44,6 @@ const imageVarName = {
 
 import axios from 'axios';
 import RaisedButton from 'material-ui/RaisedButton';
-import TextField from 'material-ui/TextField';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import env from '../../../../config/env';

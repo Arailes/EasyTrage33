@@ -8,7 +8,7 @@ import {
   TableRow,
   TableRowColumn,
 } from 'material-ui/Table';
-import axios from 'axios'
+import axios from 'axios';
 import env from '../../../../config/env';
 import RaisedButton from 'material-ui/RaisedButton';
 
