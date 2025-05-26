@@ -7,6 +7,7 @@ const cors = require('cors');
 const env = require('./config/env');
 const fs = require('fs');
 const https = require('https');
+const http = require('http');
 
 // https key/cert setup
 const hskey = fs.readFileSync(env.HTTPS_KEY);
@@ -16,6 +17,7 @@ const options = { key: hskey, cert: hscert };
 const app = express();
 
 const port = process.env.API_PORT || 3001;
+const httpPort = 3000;
 
 // Conexão com o banco de dados com tratamento de erro
 mongoose.connect(env.DATABASE, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -53,4 +55,9 @@ app.use('/api/bot', bot.router || bot);
 // Criação do servidor HTTPS
 https.createServer(options, app).listen(port, "0.0.0.0", function() {
   console.log(`API rodando em https na porta ${port}`);
+});
+
+// Criação do servidor HTTP para facilitar testes locais
+http.createServer(app).listen(httpPort, "0.0.0.0", function() {
+  console.log(`API rodando em http na porta ${httpPort}`);
 });
