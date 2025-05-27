@@ -49,7 +49,7 @@ const options = {
   cert: fs.readFileSync(certPath)
 };
 
-const port = 10000;
-https.createServer(options, app).listen(port, '0.0.0.0', () => {
-  console.log(`API rodando em https na porta ${port}`);
+const port = process.env.PORT || 10000;
+app.listen(port, "0.0.0.0", () => {
+  console.log(`API rodando em http na porta ${port}`);
 });
