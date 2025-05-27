@@ -5,7 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Alert from 'react-s-alert';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
-import env from '../../config/env';
+import env from '../client/src/config/env';
 import Center from 'react-center';
 
 const submitButtonStyle = {
