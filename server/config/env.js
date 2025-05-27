@@ -1,8 +1,8 @@
 module.exports = {
-    API_URL: '0.0.0.0:10001',
-    DATABASE: 'mongodb://mongo/easytrage',
-    APP_PATH: '/usr/src/app',
-    CONFIG_PATH: '/usr/src/app/config',
-    HTTPS_KEY: '/usr/src/app/config/easytrage-key.pem',
-    HTTPS_CERT: '/usr/src/app/config/easytrage-cert.pem'
+    API_URL: '0.0.0.0:10000',
+    DATABASE: 'mongodb://0.0.0.0:27017/easytrage',
+    APP_PATH: __dirname + '/src/components/App',
+    CONFIG_PATH: __dirname + '/src/components/App/config',
+    HTTPS_KEY: __dirname + '/easytrage-key.pem',
+    HTTPS_CERT: __dirname + '/easytrage-cert.pem'
 }

@@ -7,16 +7,7 @@ const cors = require('cors');
 const env = require('./config/env');
 const fs = require('fs');
 const https = require('https');
-const http = require('http');
-
-// https key/cert setup
-const hskey = fs.readFileSync(env.HTTPS_KEY);
-const hscert = fs.readFileSync(env.HTTPS_CERT);
-const options = { key: hskey, cert: hscert };
-
-const app = express();
-
-const port = process.env.PORT || 10000;
+const path = require('path');
 
 // Conexão com o banco de dados com tratamento de erro
 mongoose.connect(env.DATABASE, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -51,7 +42,14 @@ app.use('/api/suggestions', suggestions.router || suggestions);
 const bot = require('./routes/bot');
 app.use('/api/bot', bot.router || bot);
 
-// const port = process.env.PORT || 10000;
-app.listen(port, "0.0.0.0", () => {
-  console.log(`API rodando em http na porta ${port}`);
+const keyPath = path.join(__dirname, 'config', 'easytrage-key.pem');
+const certPath = path.join(__dirname, 'config', 'easytrage-cert.pem');
+const options = {
+  key: fs.readFileSync(keyPath),
+  cert: fs.readFileSync(certPath)
+};
+
+const port = 10000;
+https.createServer(options, app).listen(port, '0.0.0.0', () => {
+  console.log(`API rodando em https na porta ${port}`);
 });
